@@ -17,6 +17,7 @@ class User(Base):
 
 class Follower(Base):
     __tablename__ = 'follower'
+    id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
     user = relationship(User)
 
