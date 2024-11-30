@@ -9,20 +9,27 @@ Base = declarative_base()
 
 class Follower(Base):
     __tablename__ = 'follower'
-    id = Column(Integer, primary_key=True)
-    user_from_id = Column(Integer, nullable=False)
-    user_to_id = Column(Integer, nullable=False)
+    user_from_id = Column(Integer)
+    user_to_id = Column(Integer)
 
-class Address(Base):
-    __tablename__ = 'address'
-    # Here we define columns for the table address.
-    # Notice that each column is also a normal Python instance attribute.
+class User(Base):
+    __tablename__ = 'user'
     id = Column(Integer, primary_key=True)
-    street_name = Column(String(250))
-    street_number = Column(String(250))
-    post_code = Column(String(250), nullable=False)
-    person_id = Column(Integer, ForeignKey('person.id'))
-    person = relationship(Person)
+    username = Column(String(20))
+    firstname = Column(String(20))
+    lastname = Column(String(20))
+    email = Column(String(25), nullable=False)
+
+# class Address(Base):
+#     __tablename__ = 'address'
+#     # Here we define columns for the table address.
+#     # Notice that each column is also a normal Python instance attribute.
+#     id = Column(Integer, primary_key=True)
+#     street_name = Column(String(250))
+#     street_number = Column(String(250))
+#     post_code = Column(String(250), nullable=False)
+#     person_id = Column(Integer, ForeignKey('person.id'))
+#     person = relationship(Person)
 
     def to_dict(self):
         return {}
