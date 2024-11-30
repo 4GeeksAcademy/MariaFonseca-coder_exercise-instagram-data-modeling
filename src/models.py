@@ -1,6 +1,6 @@
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String
+from sqlalchemy import Column, ForeignKey, Integer, String, Enum
 from sqlalchemy.orm import relationship, declarative_base
 from sqlalchemy import create_engine
 from eralchemy2 import render_er
@@ -19,6 +19,13 @@ class User(Base):
     firstname = Column(String(20))
     lastname = Column(String(20))
     email = Column(String(25), nullable=False)
+
+class Media(Base):
+    __tablename__ = 'media'
+    id = Column(Integer, primary_key=True)
+    type = Column(Enum('image', 'video', 'audio', name='media_types'))
+    url = Column(String(250))
+    post_id = Column(Integer)
 
 # class Address(Base):
 #     __tablename__ = 'address'
