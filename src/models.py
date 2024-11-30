@@ -27,6 +27,11 @@ class Media(Base):
     url = Column(String(250))
     post_id = Column(Integer)
 
+class Post(Base):
+    __tablename__ = 'post'
+    id = Column(Integer, primary_key=True)
+    user_id = Column(Integer)
+
 # class Address(Base):
 #     __tablename__ = 'address'
 #     # Here we define columns for the table address.
